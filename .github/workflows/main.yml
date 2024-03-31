@@ -32,4 +32,3 @@ jobs:
     - name: Deploy
       run: |
         ssh ${{ vars.SSH_USER_UAT }}@${ vars.SSH_HOST_UAT}} "cd \$HOME/docker/template && docker-compose -f docker-compose.yml up -d
-
