@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Deploy to Traefik
+    - name: Deploy
       run: |
-        docker-compose -f docker-compose.yml up -d
+        ssh ${{ var.SSH_USER_UAT }}@${ var.SSH_HOST_UAT}} "cd \$HOME/docker/template && docker-compose -f docker-compose.yml up -d
 
