@@ -44,4 +44,4 @@ jobs:
         chmod 700 $HOME/.ssh
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > $HOME/.ssh/id_ed25519
         chmod 600 $HOME/.ssh/id_ed25519
-        ssh ${{ vars.SSH_USER_UAT }}@${{ vars.SSH_HOST_UAT}} "cd \$HOME/docker/template && docker-compose -f docker-compose.yml up -d"
+        ssh -i $HOME/.ssh/id_ed25519 ${{ vars.SSH_USER_UAT }}@${{ vars.SSH_HOST_UAT}} "cd \$HOME/docker/template && docker-compose -f docker-compose.yml up -d"
