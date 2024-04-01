@@ -1,13 +1,11 @@
 # Use a base image with Python and FastAPI installed
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.11
 
-# Set the working directory inside the container
-WORKDIR /app
+COPY ./requirements.txt /app/requirements.txt
 
-# Copy the FastAPI application file into the container
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+# RUN pip install fastapi uvicorn
+
 COPY ./app /app
 
 # Install any dependencies
-RUN pip install fastapi uvicorn
-
-EXPOSE 80
